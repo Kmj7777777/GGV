@@ -4,29 +4,27 @@ function drawScoreDistributionChart(){
 	var dataChart = [["점수", "분포율", { role:"style" }, { role:"annotation" }]];
 	for(var i = 1; i <= 10; i++){
 		var key = "score" + i;
-		dataChart.push([i + "점", scoreDistribution[key], "#ff5162", (scoreDistribution[key] * 100).toFixed(0) + "%"]); // 위 형식에 알맞게 데이터 삽입
+		dataChart.push([i + "점", scoreDistribution[key], "#ff5162", (scoreDistribution[key] * 100).toFixed(0) + "%"]);
 	}
 	
 	var data = google.visualization.arrayToDataTable(dataChart);
 	var view = new google.visualization.DataView(data);
 	var options = {
-		bar:{ groupWidth:"35%" }, // 그래프 너비
+		bar:{ groupWidth:"35%" },
 		backgroundColor:"transparent",
-		legend:"none", // 범례 제거
-		enableInteractivity:false, // 마우스 이벤트 제거
+		legend:"none",
+		enableInteractivity:false,
 		
-		// 세로 축
-		vAxis:{
-			ticks:[0, .2, .4, .6, .8, 1], // 레이블
-			format:"percent", // 레이블 형식
-			
-			gridlines:{ color:"#d8d8d8" }, // 주 눈금선
-			minorGridlines:{ color:"none" } // 보조 눈금선
-		},
-		
-		// 가로 축
 		hAxis:{
 			textStyle:{ bold:true }
+		},
+		
+		vAxis:{
+			ticks:[0, .2, .4, .6, .8, 1],
+			format:"percent",
+			
+			gridlines:{ color:"#d8d8d8" },
+			minorGridlines:{ color:"none" }
 		}
 	};
 	
@@ -111,8 +109,8 @@ $(function(){
 											  "<div id='scoreDistributionChart'></div>" +
 										  "</div>");
 		
-		google.charts.load("current", { "packages":["corechart"] }); // Google Chart를 사용하기 위한 준비
-		google.charts.setOnLoadCallback(drawScoreDistributionChart); // 차트 생성
+		google.charts.load("current", { "packages":["corechart"] });
+		google.charts.setOnLoadCallback(drawScoreDistributionChart);
 	});
 	
 	
